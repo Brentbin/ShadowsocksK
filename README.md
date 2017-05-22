@@ -1,15 +1,20 @@
-# ShadowsocksK
+# Shadowsocks K
 
 Shadowsocks client for Android using Kotlin.
 
+##Feature
+* only support android api 21+ (5.x+)
+* only support OnePlus 3T device which android api is 25 (7.1.x)
+* don't use support libraries if not necessary
+
 ## License
 >Copyright (C) 2017 lhyz
-
+>
 >This program is free software: you can redistribute it and/or modify
 >it under the terms of the GNU General Public License as published by
 >the Free Software Foundation, either version 3 of the License, or
 >(at your option) any later version.
-
+>
 >This program is distributed in the hope that it will be useful,
 >but WITHOUT ANY WARRANTY; without even the implied warranty of
 >MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
