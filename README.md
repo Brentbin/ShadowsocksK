@@ -7,7 +7,6 @@ Shadowsocks client for Android using Kotlin.
 ## Feature
 * only support android api 21+ (5.x+)
 * only support OnePlus 3T device which android api is 25 (7.1.x)
-* don't use support libraries if not necessary
 
 ## License
 >Copyright (C) 2017 lhyz
