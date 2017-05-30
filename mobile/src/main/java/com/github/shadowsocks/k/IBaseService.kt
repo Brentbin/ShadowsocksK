@@ -14,22 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.shadowsocks.k.utils
+package com.github.shadowsocks.k
 
-import android.content.Context
+import com.github.shadowsocks.k.db.Profile
 
 /**
  * hello,kotlin
- * Created by lhyz on 2017/5/28.
+ * Created by lhyz on 2017/5/29.
  */
-fun startShadowsocksService(context: Context) {
-    //TODO
-//    val intent = Intent(context, ShadowsocksRunnerService::class.java)
-//    context.startService(intent)
-}
+interface IBaseService {
+    fun checkProfile(profile: Profile): Boolean
+    fun connect()
+    fun startRunner(profile: Profile)
+    fun stopRunner(stopService: Boolean, msg: String? = null)
+    fun updateTrafficTotal(tx: Long, rx: Long)
+    fun updateTrafficRate()
 
-fun stopShadowsocksService(context: Context) {
-    //TODO
-//    val intent = Intent(Action.CLOSE)
-//    context.sendBroadcast(intent)
 }

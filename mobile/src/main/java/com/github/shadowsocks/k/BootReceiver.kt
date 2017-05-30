@@ -17,10 +17,8 @@
 package com.github.shadowsocks.k
 
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import com.github.shadowsocks.k.utils.startShadowsocksService
 
 /**
@@ -30,15 +28,15 @@ import com.github.shadowsocks.k.utils.startShadowsocksService
  * Boot up Receiver
  */
 class BootReceiver : BroadcastReceiver() {
-    fun isEnabled(context: Context): Boolean = PackageManager.COMPONENT_ENABLED_STATE_ENABLED ==
-            context.packageManager.getComponentEnabledSetting(ComponentName(context, BootReceiver::class.java))
-
-    fun setEnabled(context: Context, enabled: Boolean) {
-        context.packageManager.setComponentEnabledSetting(
-                ComponentName(context, BootReceiver::class.java),
-                if (enabled) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP)
-    }
+//    fun isEnabled(context: Context): Boolean = PackageManager.COMPONENT_ENABLED_STATE_ENABLED ==
+//            context.packageManager.getComponentEnabledSetting(ComponentName(context, BootReceiver::class.java))
+//
+//    fun setEnabled(context: Context, enabled: Boolean) {
+//        context.packageManager.setComponentEnabledSetting(
+//                ComponentName(context, BootReceiver::class.java),
+//                if (enabled) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+//                PackageManager.DONT_KILL_APP)
+//    }
 
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.let {

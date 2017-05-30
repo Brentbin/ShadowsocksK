@@ -7,13 +7,19 @@
         android:id="@+id/action_import"
         android:icon="@drawable/ic_note_add_white_24px"
         android:title="Import"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_export"
-        android:icon="@drawable/ic_content_copy_white_24px"
-        android:title="Export"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always">
+        <menu xmlns:android="http://schemas.android.com/apk/res/android">
+            <item
+                android:id="@+id/action_import_qr_code"
+                android:title="Scan QR Code" />
+            <item
+                android:id="@+id/action_import_clipboard"
+                android:title="Import from Clipboard" />
+            <item
+                android:id="@+id/action_manual_setting"
+                android:title="Manual Setting" />
+        </menu>
+    </item>
 
     <item
         android:id="@+id/action_settings"

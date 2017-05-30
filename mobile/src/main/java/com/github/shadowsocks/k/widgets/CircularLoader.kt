@@ -14,22 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.shadowsocks.k.utils
-
-import android.content.Context
+package com.github.shadowsocks.k.widgets
 
 /**
  * hello,kotlin
- * Created by lhyz on 2017/5/28.
+ * Created by lhyz on 2017/5/30.
+ *
+ * fab 外圆形加载动画
+ *
+ * implement of https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators
  */
-fun startShadowsocksService(context: Context) {
-    //TODO
-//    val intent = Intent(context, ShadowsocksRunnerService::class.java)
-//    context.startService(intent)
-}
-
-fun stopShadowsocksService(context: Context) {
-    //TODO
-//    val intent = Intent(Action.CLOSE)
-//    context.sendBroadcast(intent)
+class CircularLoader {
 }

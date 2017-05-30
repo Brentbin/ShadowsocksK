@@ -16,35 +16,31 @@
  */
 package com.github.shadowsocks.k.db
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
-import java.util.*
-
 /**
  * hello,kotlin
  * Created by lhyz on 2017/5/28.
  */
-@Entity(tableName = "profiles")
-class Profile {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = -1
-    var name: String = ""
-    var host: String = "127.0.0.1"
-    var localPort: Int = 1080
-    var remotePort: Int = 8989
-    var password: String = ""
-    var method: String = "aes-256-cfb"
-    var route: String = "all"
-    var remoteDNS: String = "8.8.8.8"
-    var proxyApps: Boolean = false
-    var bypass: Boolean = false
-    var udpdns: Boolean = false
-    var ipv6: Boolean = false
-    var individual: String = ""
-    var tx: Long = -1
-    var rx: Long = -1
-    val date: Date = Date()
-    var userOrder: Long = -1
-    var plugin: String = ""
-
-}
+//@Entity(tableName = "profiles")
+//class Profile {
+//    @PrimaryKey(autoGenerate = true)
+//    var id: Int = -1
+//    var name: String = ""
+//    var host: String = "127.0.0.1"
+//    var localPort: Int = 1080
+//    var remotePort: Int = 8989
+//    var password: String = ""
+//    var method: String = "aes-256-cfb"
+//    var route: String = "all"
+//    var remoteDNS: String = "8.8.8.8"
+//    var proxyApps: Boolean = false
+//    var bypass: Boolean = false
+//    var udpdns: Boolean = false
+//    var ipv6: Boolean = false
+//    var individual: String = ""
+//    var tx: Long = -1
+//    var rx: Long = -1
+//    val date: Date = Date()
+//    var userOrder: Long = -1
+//    var plugin: String = ""
+//
+//}

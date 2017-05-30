@@ -22,8 +22,17 @@ import android.app.Application
  * hello,kotlin
  * Created by lhyz on 2017/5/28.
  */
-class ShadowsocksApplication :Application(){
+class ShadowsocksApplication : Application() {
+    companion object {
+        /**
+         * 限制外部修改，一般为了方便外部访问，都需要默认放开get，但是set可以被私有化
+         */
+        lateinit var app: ShadowsocksApplication
+            private set
+    }
+
     override fun onCreate() {
         super.onCreate()
+        app = this
     }
 }

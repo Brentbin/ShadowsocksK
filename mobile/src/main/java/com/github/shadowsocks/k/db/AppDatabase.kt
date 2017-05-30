@@ -16,14 +16,11 @@
  */
 package com.github.shadowsocks.k.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-
 /**
  * hello,kotlin
  * Created by lhyz on 2017/5/28.
  */
-@Database(entities = arrayOf(Profile::class), version = 1)
-abstract class AppDatabase :RoomDatabase(){
-    abstract fun profileDao(): ProfileDao
-}
+//@Database(entities = arrayOf(Profile::class), version = 1)
+//abstract class AppDatabase :RoomDatabase(){
+//    abstract fun profileDao(): ProfileDao
+//}

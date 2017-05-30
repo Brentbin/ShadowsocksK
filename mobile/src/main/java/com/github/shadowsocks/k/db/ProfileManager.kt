@@ -16,18 +16,16 @@
  */
 package com.github.shadowsocks.k.db
 
-import android.arch.persistence.room.Room
 import android.content.Context
-import kotlin.properties.Delegates
 
 /**
  * hello,kotlin
  * Created by lhyz on 2017/5/28.
  */
 class ProfileManager(context: Context) {
-    var db: AppDatabase by Delegates.notNull()
+//    private var db: AppDatabase by Delegates.notNull()
 
     init {
-        db = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "shadowsocks").build()
+//        db = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "shadowsocks").build()
     }
 }
