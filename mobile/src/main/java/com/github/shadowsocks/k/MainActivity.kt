@@ -6,18 +6,16 @@ import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
-import android.widget.PopupMenu
 import android.widget.TextView
-import com.github.jorgecastilloprz.FABProgressCircle
 import com.github.shadowsocks.k.db.ProfileManager
+import com.github.shadowsocks.k.widgets.CircularLoader
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
     val handler = Handler()
-    var fab: FloatingActionButton by Delegates.notNull()
-    var fabProgressCircle: FABProgressCircle by Delegates.notNull()
-    var testCount = 0
+    var circularLoader: CircularLoader by Delegates.notNull()
     var statusTv: TextView by Delegates.notNull()
     var rxTv: TextView by Delegates.notNull()
     var txTv: TextView by Delegates.notNull()
@@ -32,8 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fab = findViewById(R.id.fab) as FloatingActionButton
-        fabProgressCircle = findViewById(R.id.fabProgress) as FABProgressCircle
+        circularLoader = findViewById(R.id.circular_loader) as CircularLoader
         statusTv = findViewById(R.id.tv_status) as TextView
         rxTv = findViewById(R.id.tv_rx) as TextView
         txTv = findViewById(R.id.tv_tx) as TextView
@@ -42,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         statusBar = findViewById(R.id.status_bar)
 
         profileManager = ProfileManager(ShadowsocksApplication.app)
+
+        supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_holder, ProfilesFragment())
+                .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -55,23 +56,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.action_import -> {
-//                val popup = PopupMenu(this, findViewById(R.id.action_import))
-//                popup.menuInflater.inflate(R.menu.menu_import, popup.menu)
-//                popup.setOnMenuItemClickListener { item ->
-//                    when (item!!.itemId) {
-//                        R.id.action_import_qr_code -> {
-//
-//                        }
-//                        R.id.action_import_clipboard -> {
-//
-//                        }
-//                        R.id.action_manual_setting -> {
-//
-//                        }
-//                    }
-//                    true
-//                }
-//                popup.show()
+
                 return true
             }
         }

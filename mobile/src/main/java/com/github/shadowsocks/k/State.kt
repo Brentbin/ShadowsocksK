@@ -16,18 +16,13 @@
  */
 package com.github.shadowsocks.k
 
-import com.github.shadowsocks.k.db.Profile
-
 /**
  * hello,kotlin
- * Created by lhyz on 2017/5/29.
+ * Created by lhyz on 2017/5/31.
  */
-interface IBaseService {
-    fun checkProfile(profile: Profile): Boolean
-    fun connect()
-    fun startRunner(profile: Profile)
-    fun stopRunner(stopService: Boolean, msg: String? = null)
-    fun updateTrafficTotal(tx: Long, rx: Long)
-    fun updateTrafficRate()
-
+enum class State {
+    CONNECTING, //连接中
+    CONNECTED, //已连接
+    STOPPING, //停止中
+    IDLE //停止状态
 }
