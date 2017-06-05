@@ -33,6 +33,8 @@ import kotlin.properties.Delegates
  */
 class ProgressArcView(context: Context) : View(context) {
 
+    private val TAG = ProgressArcView::class.java.canonicalName
+
     private var mPaint: Paint by Delegates.notNull()
     private var mRect: RectF by Delegates.notNull()
     private var mStartAngle: Float by Delegates.notNull()
@@ -53,23 +55,7 @@ class ProgressArcView(context: Context) : View(context) {
 
         mStartAngle = -90f
         mSweepAngle = 0f
-    }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        val width = MeasureSpec.getSize(widthMeasureSpec).toFloat()
-        val height = MeasureSpec.getSize(heightMeasureSpec).toFloat()
-        mRect.set(0f + strokeWidth / 2, 0f + strokeWidth / 2, width - strokeWidth / 2, height - strokeWidth / 2)
-        mPaint.strokeWidth = strokeWidth
-        setMeasuredDimension(measuredWidth, measuredHeight)
-    }
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-        canvas?.drawArc(mRect, mStartAngle, mSweepAngle, false, mPaint)
-    }
-
-    fun startAnimation() {
         animation = ValueAnimator.ofFloat(-90f, 270f)
         animation.duration = 3000
         animation.interpolator = DecelerateInterpolator()
@@ -77,7 +63,8 @@ class ProgressArcView(context: Context) : View(context) {
             val v = anim?.animatedValue as Float
             mStartAngle = v
             mSweepAngle = v + 90f
-            Log.e("TAG", "" + v)
+            Log.e(TAG, "" + v)
+            invalidate()
         }
         animation.addListener(object : Animator.AnimatorListener {
             override fun onAnimationRepeat(animation: Animator?) {
@@ -96,6 +83,34 @@ class ProgressArcView(context: Context) : View(context) {
                 listener?.onStart()
             }
         })
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val width = MeasureSpec.getSize(widthMeasureSpec).toFloat()
+        val height = MeasureSpec.getSize(heightMeasureSpec).toFloat()
+        mRect.set(0f + strokeWidth / 2, 0f + strokeWidth / 2, width - strokeWidth / 2, height - strokeWidth / 2)
+        mPaint.strokeWidth = strokeWidth
+        setMeasuredDimension(measuredWidth, measuredHeight)
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+        canvas?.drawArc(mRect, mStartAngle, mSweepAngle, false, mPaint)
+        Log.e(TAG, "draw")
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        playAnimation()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        stopAnimation()
+    }
+
+    fun playAnimation() {
         animation.start()
     }
 

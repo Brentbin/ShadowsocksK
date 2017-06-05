@@ -47,7 +47,7 @@ class ProgressCompleteView(context: Context?) : View(context) {
         paint.strokeCap = Paint.Cap.BUTT
 
         animation = ValueAnimator.ofFloat(0f, 1f)
-        animation.duration = 1000
+        animation.duration = 200
         animation.interpolator = LinearInterpolator()
         animation.addUpdateListener { animation ->
             alpha = animation?.animatedValue as Float
@@ -59,9 +59,9 @@ class ProgressCompleteView(context: Context?) : View(context) {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                postDelayed({
-                    visibility = GONE
-                }, 500)
+//                postDelayed({
+//                    visibility = GONE
+//                }, 500)
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -72,17 +72,21 @@ class ProgressCompleteView(context: Context?) : View(context) {
                 visibility = VISIBLE
             }
         })
+
+        visibility = GONE
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
+
         centerX = (width / 2).toFloat()
         centerY = (height / 2).toFloat()
         radius = if (centerX < centerY) centerX else centerY
 
-        val factor = measuredWidth / 7
-        doneIcon.bounds.set(factor * 2, factor * 2, width - factor * 2, height - factor * 2)
+        val factor = measuredWidth / 16
+        doneIcon.bounds.set(factor * 5, factor * 5, width - factor * 5, height - factor * 5)
 
         setMeasuredDimension(width, height)
     }
@@ -94,7 +98,7 @@ class ProgressCompleteView(context: Context?) : View(context) {
         doneIcon.draw(canvas)
     }
 
-    fun startAnimation() {
+    fun playAnimation() {
         animation.start()
 
     }
