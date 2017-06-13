@@ -2,11 +2,9 @@ package com.github.shadowsocks.k
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import com.github.shadowsocks.k.db.ProfileManager
@@ -14,17 +12,15 @@ import com.github.shadowsocks.k.widgets.CircularLoader
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
-    val handler = Handler()
-    var circularLoader: CircularLoader by Delegates.notNull()
-    var statusTv: TextView by Delegates.notNull()
-    var rxTv: TextView by Delegates.notNull()
-    var txTv: TextView by Delegates.notNull()
-    var txRateTv: TextView by Delegates.notNull()
-    var rxRateTv: TextView by Delegates.notNull()
-
-    var statusBar: View by Delegates.notNull()
-
-    var profileManager: ProfileManager by Delegates.notNull()
+    private val handler = Handler()
+    private var circularLoader: CircularLoader by Delegates.notNull()
+    private var statusTv: TextView by Delegates.notNull()
+    private var rxTv: TextView by Delegates.notNull()
+    private var txTv: TextView by Delegates.notNull()
+    private var txRateTv: TextView by Delegates.notNull()
+    private var rxRateTv: TextView by Delegates.notNull()
+    private var statusBar: View by Delegates.notNull()
+    private var profileManager: ProfileManager by Delegates.notNull()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         statusBar = findViewById(R.id.status_bar)
 
         profileManager = ProfileManager(ShadowsocksApplication.app)
+
+        val fab = findViewById(R.id.fab_connect)
+        fab.setOnClickListener {
+            circularLoader.setProgress()
+            fab.postDelayed({
+                circularLoader.setError()
+            }, 5000)
+        }
 
         supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_holder, ProfilesFragment())

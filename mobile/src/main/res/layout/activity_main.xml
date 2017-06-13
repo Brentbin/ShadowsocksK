@@ -111,13 +111,15 @@
         app:layout_anchor="@id/status_bar"
         app:layout_anchorGravity="top|end">
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
+        <ImageView
+            android:id="@+id/fab_connect"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:elevation="1dp"
+            android:background="@drawable/bg_fab"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_start_idle"
-            app:elevation="1dp" />
+            android:scaleType="center"/>
 
     </com.github.shadowsocks.k.widgets.CircularLoader>
 
