@@ -42,6 +42,8 @@ import kotlin.properties.Delegates
  *  A circular loader may be integrated with a floating action button.
  *
  * implement of https://material.io/guidelines/components/progress-activity.html#progress-activity-types-of-indicators
+ *
+ * TODO implement indeterminate progress style
  */
 
 class CircularLoader(context: Context, attrs: AttributeSet) :
@@ -252,7 +254,7 @@ class CircularLoader(context: Context, attrs: AttributeSet) :
         }
 
         /**
-         * stop animation and set progress done
+         * stop animation
          */
         fun stop() {
             alpha = 0.0f

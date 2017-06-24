@@ -38,10 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById(R.id.fab_connect)
         fab.setOnClickListener {
-            circularLoader.setProgress()
-            fab.postDelayed({
-                circularLoader.setError()
-            }, 5000)
         }
 
         supportFragmentManager.beginTransaction()
