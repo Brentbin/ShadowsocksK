@@ -1,18 +1,18 @@
 package com.github.shadowsocks.k
 
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.github.shadowsocks.k.db.ProfileManager
 import com.github.shadowsocks.k.widgets.CircularLoader
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
-    private val handler = Handler()
+    //    private val handler = Handler()
     private var circularLoader: CircularLoader by Delegates.notNull()
     private var statusTv: TextView by Delegates.notNull()
     private var rxTv: TextView by Delegates.notNull()
@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        circularLoader = findViewById(R.id.circular_loader) as CircularLoader
-        statusTv = findViewById(R.id.tv_status) as TextView
-        rxTv = findViewById(R.id.tv_rx) as TextView
-        txTv = findViewById(R.id.tv_tx) as TextView
-        txRateTv = findViewById(R.id.tv_tx_rate) as TextView
-        rxRateTv = findViewById(R.id.tv_rx_rate) as TextView
+        circularLoader = findViewById<CircularLoader>(R.id.circular_loader)
+        statusTv = findViewById<TextView>(R.id.tv_status)
+        rxTv = findViewById<TextView>(R.id.tv_rx)
+        txTv = findViewById<TextView>(R.id.tv_tx)
+        txRateTv = findViewById<TextView>(R.id.tv_tx_rate)
+        rxRateTv = findViewById<TextView>(R.id.tv_rx_rate)
         statusBar = findViewById(R.id.status_bar)
 
         profileManager = ProfileManager(ShadowsocksApplication.app)
 
-        val fab = findViewById(R.id.fab_connect)
+        val fab = findViewById<ImageView>(R.id.fab_connect)
         fab.setOnClickListener {
         }
 
